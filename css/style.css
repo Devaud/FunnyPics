@@ -77,7 +77,7 @@ html{
     width: 20%;
     height: 94.6%;
     background: #2c3e50;
-    float: left;
+    float: right;
     display: none;
 }
 
@@ -149,8 +149,8 @@ html{
 .contenu{
     width: 100%;
     height: auto;
+    float: left;
     margin-bottom: -40px;
-    float: right;
 }
 
 .block{

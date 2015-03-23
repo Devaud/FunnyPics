@@ -21,8 +21,6 @@ ManageNavigation();
         <?php
         echo displayNav();
         ?>
-        
-
         <section class="sec-left" id="categorie">
             <h2>Catégories</h2>
             <ul class="menu_cat">
@@ -35,6 +33,7 @@ ManageNavigation();
             </ul>
         </section>
 
+
         <section class="contenu" id="contenu">
             <center>
                 <section class="block">
@@ -45,15 +44,14 @@ ManageNavigation();
                             <span>Comments</span>
                         </a>
                     </section>
-                    
+
                 </section>
             </center>
         </section>
 
-       <?php
-       echo displayFooter();
-       ?>
-
+        <?php
+        echo displayFooter();
+        ?>
     </body>
 </html>
 <?php
