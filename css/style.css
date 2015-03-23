@@ -60,15 +60,14 @@ html{
 
 .nav-sup ul li a:hover{
     background-color: #34495e;
-    font-size: 20px;
-    padding-bottom: 12px;
+    font-size: 19px;
+    padding-bottom: 11px;
     cursor: pointer;
 }
 
 .nav-sup ul li a.active{
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 19px;
-    padding-bottom: 12px;
+    color: #74898A;
+    text-shadow: none;
 }
 /* FIN CSS MENU */
 
