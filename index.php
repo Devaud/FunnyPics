@@ -39,9 +39,9 @@ ManageNavigation();
                 <section class="block">
                     <button class='btn btn-image-suivant'>Image suivante</button>
                     <section class="block-img">
-                        <a href="#" class="randomPic" data-info="1">
-                            <img src="./media/cats_hello.jpg" alt="randomPictures"/>
-                            <span>Comments</span>
+                        <a href="?" class="randomPic">
+                            <img src="./media/FunnyPics.jpg" alt="randomPictures"/>
+                            <span>Bienvenue sur FunnyPics</span>
                         </a>
                     </section>
 

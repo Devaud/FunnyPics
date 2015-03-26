@@ -15,6 +15,7 @@ ManageNavigation();
         <link rel="stylesheet" href="./css/style.css" />
         <script src='./js/jquery-2.1.3.min.js'></script>
         <script src="./js/jscript.js"></script>
+        <script src="./js/jverification.js"></script>
         <title>FunnyPics</title>
     </head>
     <body>
@@ -30,10 +31,10 @@ ManageNavigation();
                             Information
                         </h3>
                         <p class='block-text'>
-                            FunnyPics réunit des photos trouvées sur le web ou envoyées par des utilisateurs du site web.
+                            FunnyPics réunit des photos trouvées sur le web ou envoyées par des utilisateurs du site.
                         </p>
                         <p class='block-text'>
-                            Pour nous envoyer votre image via ce formulaire passer par un hébergeur d'image tel que <a href='http://www.noelshack.com/'>NoelShack</a> qui permet de créer une url avec votre image.
+                            Pour nous envoyer votre image via ce formulaire passer par un hébergeur d'image tel que <a target="_blank" href='http://www.noelshack.com' >NoelShack</a> qui permet de créer une url avec votre image.
                             Puis envoyer nous l'url de votre image avec, si vous le voulez, le commentaire que vous voulez afficher sous l'image.
                         </p>
                     </section>
@@ -45,12 +46,12 @@ ManageNavigation();
                         <form class="sForm" method="post" action="" >
                             <section class="sForm-sec">
                                 <label>Nom</label>
-                                <input type="text" name="nom" />
+                                <input type="text" name="nom" id="nom" />
                             </section>
 
                             <section class="sForm-sec" >
                                 <label>E-Mail</label>
-                                <input type="email" name="email" />
+                                <input type="email" name="email" id="email" />
                             </section>
 
                             <section class="sForm-sec" >
@@ -64,7 +65,7 @@ ManageNavigation();
 
                             <section class="sForm-sec" >
                                 <label>Commentaires</label>
-                                <textarea rows="6" cols='6'></textarea>
+                                <textarea rows="6" cols='6' id="texta"></textarea>
                             </section>
 
                             <section class="sForm-Button">

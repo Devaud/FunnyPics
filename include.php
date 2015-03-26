@@ -112,7 +112,7 @@ function displayNav() {
         $text .= '<li><a class="active">Random</a></li>';
         $text .= '<li><a class="categorie" data-rel="categorie">Catégorie</a></li>';
     } else {
-        $text .= '<li><a href="./index.php?page=home">Random</a></li>';
+        $text .= '<li><a href="./index.php?page=home" class="randomPic">Random</a></li>';
     }
 
     $text .= '</ul>';

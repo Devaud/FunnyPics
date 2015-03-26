@@ -7,9 +7,12 @@
 var array_id = new Array();
 var current_cat = 1;
 
-// Gestion des popup
+/**
+ * Gestion des popups
+ * @returns {undefined} ne retourne rien
+ */
 function popup() {
-    $("a.categorie").on("click", function () {
+    $("a.categorie").on("click", function() {
         var popID = $(this).data('rel'); //Trouver la pop-up correspondante
 
         // Modifi la taille du contenu
@@ -23,10 +26,10 @@ function popup() {
         return false;
     });
 
-    $('body').on("click", "#contenu, a.close, a.cat", function () {
+    $('body').on("click", "#contenu, a.close, a.cat", function() {
 
-        // Efface la popue
-        $("#categorie").fadeOut(function () {
+        // Efface la popup
+        $("#categorie").fadeOut(function() {
             $('#contenu').css({
                 'width': '100%'
             });
@@ -51,8 +54,7 @@ function rand(min, max) {
  * @returns {undefined} 
  */
 function changeCat() {
-    $('a.cat').on("click", function () {
-        oldCat = current_cat;
+    $('a.cat').on("click", function() {
         current_cat = $(this).data("info");
         init_array(current_cat);
 
@@ -63,23 +65,52 @@ function changeCat() {
 }
 
 /**
+ * Fonction pour la requete ajax
+ * @param {String} type type de la transmisssion (GET/POST)
+ * @param {String} url url de la page à contacter
+ * @param {String} data Information que la page php doit traiter
+ * @param {String} success_response ce qu'il faut faire en cas de success
+ * @returns {undefined} ne retourne rien
+ */
+function requestAjax(type, url, data, success_response) {
+    $.ajax({
+        type: type,
+        url: url,
+        data: data,
+        success: function(server_response) {
+            switch (success_response) {
+                case "random" :
+                    $("a.randomPic").html(server_response).show();
+                    break;
+                case "recupId" :
+                    var id = server_response;
+                    array_id = id.split(",");
+                    array_id.splice($.inArray("", array_id), 1);
+                    break;
+            }
+
+        }
+    });
+}
+
+/**
+ * Charge un id aléatoirement
+ * @returns {integer} id pris aléatoirement dans le tableau d'id
+ */
+function randomId() {
+    var nbRand = rand(0, array_id.length - 1);
+    return array_id[nbRand];
+}
+
+/**
  * Charge une image aléatoire
  * @returns {undefined}
  */
 function randomPics() {
-    $('.block').on("click", "button.btn-image-suivant, a.randomPic",function () {
-        var nbRand = rand(0, array_id.length - 1);
-        var id = array_id[nbRand];
+    $('.block').on("click", "button.btn-image-suivant, a.randomPic", function() {
+        var id = randomId();
         var data = "categorie=" + current_cat + "&id=" + id;
-
-        $.ajax({
-            type: "GET",
-            url: "random.php",
-            data: data,
-            success: function (server_response) {
-                $("a.randomPic").html(server_response).show();
-            }
-        });
+        requestAjax("GET", "random.php", data, "random");
     });
 }
 
@@ -90,16 +121,7 @@ function randomPics() {
  */
 function init_array(cat) {
     var data = "categorie=" + cat;
-    $.ajax({
-        type: "GET",
-        url: "recupId.php",
-        data: data,
-        success: function (server_response) {
-            var id = server_response;
-            array_id = id.split(",");
-            array_id.splice($.inArray("", array_id), 1);
-        }
-    });
+    requestAjax("GET", "recupId.php", data, "recupId");
 }
 
 /**
@@ -113,7 +135,7 @@ function onLoad() {
 /**
  * Fonction général de JQuery
  */
-$(function () {
+$(function() {
     popup();
     changeCat();
     randomPics();
