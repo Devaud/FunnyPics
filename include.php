@@ -141,7 +141,7 @@ function displayFooter() {
                     <ul>
                         <li><a href="./contact.php?page=contact">Contact</a></li>
                         <li><a>A propos</a></li>
-                        <li><a>Administration</a></li>
+                        <li><a href="./administration/pannelAdmin.php?page=pannelAdmin">Administration</a></li>
                     </ul>
                 </center>
             </section>

@@ -59,7 +59,7 @@ ManageNavigation();
                                 <select>
                                     <option>Proposer une image</option>
                                     <option>Signaler un bug sur le site</option>
-                                    <option>Autre</option>
+                                    <option>Autres</option>
                                 </select>
                             </section>
 
