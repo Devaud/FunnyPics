@@ -70,9 +70,10 @@ function changeCat() {
  * @param {String} url url de la page à contacter
  * @param {String} data Information que la page php doit traiter
  * @param {String} success_response ce qu'il faut faire en cas de success
+ * @param {String} url2 url de l'image générée
  * @returns {undefined} ne retourne rien
  */
-function requestAjax(type, url, data, success_response) {
+function requestAjax(type, url, data, success_response, url2) {
     $.ajax({
         type: type,
         url: url,
@@ -81,6 +82,7 @@ function requestAjax(type, url, data, success_response) {
             switch (success_response) {
                 case "random" :
                     $("a.randomPic").html(server_response).show();
+                    $("section.dl").html(url2).show();
                     break;
                 case "recupId" :
                     var id = server_response;
@@ -110,7 +112,8 @@ function randomPics() {
     $('.block').on("click", "button.btn-image-suivant, a.randomPic", function() {
         var id = randomId();
         var data = "categorie=" + current_cat + "&id=" + id;
-        requestAjax("GET", "random.php", data, "random");
+        var url = "<span>Direct link:</span><a href=\"./read.php?page=read&pics=" + id + "\" >read.php?page=read&pics=" + id + " </a>";
+        requestAjax("GET", "random.php", data, "random", url);
     });
 }
 
@@ -121,7 +124,7 @@ function randomPics() {
  */
 function init_array(cat) {
     var data = "categorie=" + cat;
-    requestAjax("GET", "recupId.php", data, "recupId");
+    requestAjax("GET", "recupId.php", data, "recupId", 0);
 }
 
 /**

@@ -8,6 +8,16 @@ and open the template in the editor.
 include './include.php';
 LoadFromSession();
 ManageNavigation();
+
+if(isset($_GET['pics'])){
+    $idPic = $_GET['pics'];
+    $idCat = 1;
+    $url = getPictureWithCat($idCat, $idPic);
+}else{
+    header('location: index.php?page=home');
+    exit();
+}
+
 ?>
 <html>
     <head>
@@ -15,38 +25,21 @@ ManageNavigation();
         <link rel="stylesheet" href="./css/style.css" />
         <script src='./js/jquery-2.1.3.min.js'></script>
         <script src="./js/jscript.js"></script>
-        <title>FunnyPics</title>
+        <title>FunnyPics - Viewer</title>
     </head>
     <body>
         <?php
         echo displayNav();
         ?>
-        <section class="sec-left" id="categorie">
-            <h2>Catégories</h2>
-            <ul class="menu_cat">
-                <?php
-                echo displayCategories();
-                ?>
-                <li>
-                    <a class="close">Fermer</a>
-                </li>
-            </ul>
-        </section>
-
 
         <section class="contenu" id="contenu">
             <center>
                 <section class="block">
-                    <button class='btn btn-image-suivant'>Image suivante</button>
                     <section class="block-img">
-                        <a href="?" class="randomPic">
-                            <img src="./media/FunnyPics.jpg" alt="randomPictures"/>
-                            <span>Bienvenue sur FunnyPics</span>
+                        <a href="./index.php?page=home">
+                            <img src="<?php echo $url['picturesPath']; ?>" alt="randomPictures"/>
+                            <span><?php echo $url['comments']; ?></span>
                         </a>
-                    </section>
-                    
-                    <section class="block-url dl">
-
                     </section>
 
                 </section>
