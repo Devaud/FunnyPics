@@ -188,6 +188,8 @@ html{
 
 .block-img img{
     width: 90%;
+    max-width: 617px;
+    max-height: 460px;
     display: block;
     border: 1px solid grey;
 }
